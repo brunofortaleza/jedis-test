@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            color: #333;
+            margin: 0 0 20px 0;
+        }
+
+        p {
+            margin: 0 0 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            border: 1px solid #2980b9;
+            border-radius: 3px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Alteração de Dados do Usuário</h1>
+      <p>Olá <%= @user.full_name %>!</p>
+      <p>Seus dados foram atualizados com sucesso em nosso sistema.</p>
+      <p>Abaixo estão seus novos dados:</p>
+      <ul>
+        <li>Nome completo: <%= @user.full_name %></li>
+        <li>CPF: <%= @user.cpf %></li>
+        <li>CNS: <%= @user.cns %></li>
+        <li>E-mail: <%= @user.email %></li>
+        <li>Data de Nascimento: <%= @user.birth_date.strftime('%d/%m/%Y') %></li>
+        <li>Telefone: <%= @user.phone_number %></li>
+      </ul>
+      <p>Se você não realizou nenhuma alteração em seus dados, entre em contato conosco o mais breve possível.</p>
+      <p>Atenciosamente,<br/>Equipe do Site</p>
+      <hr/>
+      <p>Caso tenha alguma dúvida, responda a este e-mail ou entre em contato conosco através do telefone XXXX-XXXX ou do e-mail <a href="mailto:contato@site.com">contato@site.com</a>.</p>
+      <p>Não responda a este e-mail diretamente, pois ele foi gerado automaticamente.</p>
+    </div>
+  </body>
+</html>
