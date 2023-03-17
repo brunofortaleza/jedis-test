@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Pessoas</h1>
+  <div class="row mb-3">
+    <div class="col-12 col-md-6">
+      <%= search_form_for @q, class: "d-flex" do |f| %>
+        <%= f.text_field :full_name_or_email_or_cns_or_cpf_or_email_or_phone_number_cont, class: "form-control me-2", placeholder: "Pesquisar" %>
+        <%= button_tag type: :submit, class: "btn btn-outline-success" do %>
+          Pesquisar
+        <% end %>
+        <%= link_to users_path, class: "btn btn-outline-secondary ms-2" do %>
+          Limpar
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-6">
+      <%= link_to "Adicionar Pessoa", new_user_path, class: "btn btn-primary float-end" %>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>CNS</th>
+      <th>Email</th>
+      <th>Data de Nascimento</th>
+      <th>Telefone</th>
+      <th>Imagem</th>
+      <th>Status</th>
+      <th>Opções</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td><%= user.cpf %></td>
+        <td><%= user.cns %></td>
+        <td><%= user.email %></td>
+        <td><%= user.birth_date %></td>
+        <td><%= user.phone_number %></td>
+        <td><%= image_tag user.image_url(:thumb), alt: "Imagem de perfil" %></td>
+        <td><span class="badge <%= user.status ? "bg-success" : "bg-danger" %>"><%= user.status ? "Ativo" : "Inativo" %></span></td>
+        <td><%= link_to "Editar", edit_user_path(user), class: "btn btn-warning" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
