@@ -1,24 +1,51 @@
-# README
+## Para acessar a aplicação em produção
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Acessar o link:
+- https://jedis-test.herokuapp.com/
 
-Things you may want to cover:
+## Para rodar a aplicação
 
-* Ruby version
+### Necessário 
 
-* System dependencies
+Para rodar o projeto é necessário ter:
 
-* Configuration
+  1. Ruby 3.0.3
+  2. Ruby on Rails 7.0.4
+  3. PostgreSQL
 
-* Database creation
+### Dependências
 
-* Database initialization
+Instalar as dependências necessárias:
 
-* How to run the test suite
+```
+  $ bundle install
+  $ yarn install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Verificar se está instalado o ImageMagick:
 
-* Deployment instructions
+```
+  $ convert -version
+```
 
-* ...
+Caso não esteja, pode obtê-lo pelo apt-get:
+
+```
+  $ sudo apt-get install imagemagick
+```
+### Banco de dados
+
+Criar o banco de dados:
+
+```
+  $ rails db:create
+  $ rails db:migrate
+```
+
+### Rodar a aplicação
+
+Com o ambiente configurado:
+
+```
+  $ rails s
+```
