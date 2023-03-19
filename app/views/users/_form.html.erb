@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Cadastro de Usuário</h1>
 
-  <%= form_for @user do |form| %>
+  <%= form_for @user, html: { data: { controller: "masks" } }  do |form| %>
     <% if @user.errors.any? %>
       <div class="alert alert-danger">
         <h4><%= pluralize(@user.errors.count, "erro") %>:</h4>
@@ -21,12 +21,12 @@
 
         <div class="form-group">
           <%= form.label :cpf, "CPF" %>
-          <%= form.text_field :cpf, class: "form-control" %>
+          <%= form.text_field :cpf, class: "form-control", data: { masks_target: 'cpf' } %>
         </div>
 
         <div class="form-group">
           <%= form.label :cns, "CNS" %>
-          <%= form.text_field :cns, class: "form-control" %>
+          <%= form.text_field :cns, class: "form-control", data: { masks_target: 'cns' } %>
         </div>
 
         <div class="form-group">
@@ -36,13 +36,12 @@
 
         <div class="form-group">
           <%= form.label :birth_date, "Data de Nascimento" %>
-          <%= form.date_field :birth_date, class: "form-control" %>
+          <%= form.text_field :birth_date, id:"datepicker", class: "form-control datepicker" %>
         </div>
 
         <div class="form-group">
           <%= form.label :phone_number, "Telefone" %>
-          <%= form.text_field :phone_number, class: 'form-control', placeholder: '(99) 99999-9999' %>
-          <%#= form.text_field :phone, class: 'form-control', placeholder: '(99) 99999-9999', type: 'tel', pattern: '\([0-9]{2}\) [0-9]{5}-[0-9]{4}' %>
+          <%= form.text_field :phone_number, class: 'form-control', placeholder: '(99) 99999-9999',  data: { masks_target: 'phone' } %>
         </div>
 
         <div class="form-group">
@@ -62,7 +61,7 @@
         <%= form.fields_for :address do |address_form| %>
           <div class="form-group">
             <%= address_form.label :cep, "CEP" %>
-            <%= address_form.text_field :cep, class: "form-control" %>
+            <%= address_form.text_field :cep, class: "form-control", data: { masks_target: 'cep' } %>
           </div>
 
           <div class="form-group">
@@ -86,7 +85,8 @@
 
           <div class="form-group">
             <%= address_form.label :state, "UF" %>
-            <%= address_form.text_field :state, class: "form-control" %>
+            <%= address_form.select :state, state_options, { prompt: 'Selecione o estado' }, { class: 'form-control' } %>
+
           </div>
 
           <div class="form-group">
